@@ -1,0 +1,6 @@
+- id: docker-compose-check
+  name: Validate docker-compose files
+  description: Checks that vault files are encrypted
+  entry: compose-check.sh
+  files: docker-compose.y[a]{0,1}ml$
+  language: script
