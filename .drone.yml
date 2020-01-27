@@ -1,0 +1,29 @@
+---
+kind: pipeline
+name: test
+
+workspace:
+  base: "/app"
+  path: "."
+
+steps:
+
+  - name: test
+    image: python:3-alpine
+    commands:
+      - apk add bash shellcheck make gcc musl-dev libffi-dev openssl-dev
+      - pip install docker-compose
+      - make all
+
+  - name: notify
+    image: drillster/drone-email
+    settings:
+      host:
+        from_secret: SMTP_HOST  # pragma: whitelist secret
+      username:
+        from_secret: SMTP_USER  # pragma: whitelist secret
+      password:
+        from_secret: SMTP_PASS  # pragma: whitelist secret
+      from: drone@iamthefij.com
+    when:
+      status: [changed, failure]
