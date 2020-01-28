@@ -11,7 +11,7 @@ steps:
   - name: test
     image: python:3-alpine
     commands:
-      - apk add bash shellcheck make gcc musl-dev libffi-dev
+      - apk add bash shellcheck make gcc musl-dev libffi-dev openssl-dev
       - pip install docker-compose
       - make all
 
