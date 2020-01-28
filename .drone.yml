@@ -11,9 +11,8 @@ steps:
   - name: test
     image: python:3-alpine
     commands:
-      - ls
-      - pwd
       - apk add bash make shellcheck
+      - pip install docker-compose
       - make all
 
   - name: notify
