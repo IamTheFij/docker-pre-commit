@@ -2,9 +2,13 @@
 kind: pipeline
 name: test
 
+workspace:
+  base: "/app"
+  path: "."
+
 steps:
 
-  - name: shellcheck
+  - name: test
     image: python:3-alpine
     commands:
       - apk add make shellcheck
