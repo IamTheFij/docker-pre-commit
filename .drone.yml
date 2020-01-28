@@ -13,7 +13,7 @@ steps:
     commands:
       - ls
       - pwd
-      - apk add make shellcheck
+      - apk add bash make shellcheck
       - make all
 
   - name: notify
