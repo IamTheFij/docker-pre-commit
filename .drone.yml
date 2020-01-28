@@ -11,6 +11,8 @@ steps:
   - name: test
     image: python:3-alpine
     commands:
+      - ls
+      - pwd
       - apk add make shellcheck
       - make all
 
