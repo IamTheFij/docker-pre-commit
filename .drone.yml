@@ -7,7 +7,7 @@ steps:
   - name: shellcheck
     image: python:3-alpine
     commands:
-      - apk install shellcheck
+      - apk add shellcheck
       - make all
 
   - name: notify
