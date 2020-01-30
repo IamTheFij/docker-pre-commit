@@ -9,9 +9,10 @@ workspace:
 steps:
 
   - name: test
-    image: python:3-alpine
+    image: python:3-slim
     commands:
-      - apk add bash shellcheck make gcc musl-dev libffi-dev openssl-dev
+      - apt-get update
+      - apt-get install --no-install-recommends make
       - pip install docker-compose
       - make all
 
