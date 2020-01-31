@@ -12,7 +12,7 @@ steps:
     image: python:3-slim
     commands:
       - apt-get update
-      - apt-get install --no-install-recommends make
+      - apt-get install -y --no-install-recommends make shellcheck
       - pip install docker-compose
       - make all
 
