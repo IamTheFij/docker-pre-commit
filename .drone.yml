@@ -9,10 +9,8 @@ workspace:
 steps:
 
   - name: test
-    image: python:3-slim
+    image: iamthefij/drone-pre-commit:latest
     commands:
-      - apt-get update
-      - apt-get install -y --no-install-recommends make shellcheck
       - pip install docker-compose
       - make all
 
