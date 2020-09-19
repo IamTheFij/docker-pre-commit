@@ -4,7 +4,7 @@ set -e
 
 check_file() {
     local file=$1
-    docker-compose -f "$file" config -q 2>&1 \
+    docker-compose --file "$file" config --quiet 2>&1 \
         | sed "/variable is not set. Defaulting/d"
     return "${PIPESTATUS[0]}"
 }
