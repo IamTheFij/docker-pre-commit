@@ -1,12 +1,8 @@
 .PHONY: all test clean
 
-all: test shellcheck
+all: check test
 
 test: test-negative test-positive
-
-.PHONY: shellcheck
-shellcheck:
-	shellcheck *.sh
 
 .PHONY: test-positive
 test-positive:
@@ -19,3 +15,13 @@ test-negative:
 	./compose-check.sh tests/docker-compose.bad.yml && { echo 'fail'; exit 1; } || echo 'ok'
 	@echo "Check multiple files. Should error."
 	./compose-check.sh tests/docker-compose* && { echo 'fail'; exit 1; } || echo 'ok'
+
+# Installs pre-commit hooks
+.PHONY: install-hooks
+install-hooks:
+	pre-commit install --install-hooks
+
+# Checks files for encryption
+.PHONY: check
+check:
+	pre-commit run --all-files
