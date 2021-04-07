@@ -24,7 +24,7 @@ check_files() {
 }
 
 if ! check_files "$@" ; then
-    echo "To ignore, use --no-verify"
+    echo "Some compose files failed"
 fi
 
 exit $has_error
