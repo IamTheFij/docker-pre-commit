@@ -1,10 +1,19 @@
-#! /bin/bash
+#! /usr/bin/env bash
 # Verifies that files passed in are valid for docker-compose
 set -e
 
+if command -v docker-compose &> /dev/null ; then
+    COMPOSE=docker-compose
+elif command -v docker &> /dev/null && docker help compose &> /dev/null; then
+    COMPOSE=docker compose
+else
+    echo "ERROR: Neither 'docker-compose' or 'docker compose' were found"
+    exit 1
+fi
+
 check_file() {
     local file=$1
-    docker-compose --file "$file" config --quiet 2>&1 \
+    env $COMPOSE --file "$file" config --quiet 2>&1 \
         | sed "/variable is not set. Defaulting/d"
     return "${PIPESTATUS[0]}"
 }
