@@ -4,4 +4,4 @@
   description: Checks that docker compose files are valid
   language: script
   entry: compose-check.sh
-  files: (docker-)?compose.y[a]{0,1}ml$
+  files: (docker-)?compose\.ya?ml$
