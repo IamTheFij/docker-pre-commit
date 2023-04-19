@@ -19,4 +19,4 @@ and then run `pre-commit autoupdate`.
 ## Hooks
 
 ### docker-compose-check
-Verifies that docker-compose files are valid by using `docker-compose config` to parse them.
+Verifies that docker compose files are valid by using `docker compose config` to parse them.
