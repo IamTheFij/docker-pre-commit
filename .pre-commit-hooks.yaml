@@ -5,3 +5,8 @@
   language: script
   entry: compose-check.sh
   files: (docker-)?compose\.ya?ml$
+- id: docker-compose-check-standalone
+  name: Validate docker compose files using standalone compose binary
+  language: python
+  entry: compose-check.sh
+  files: (docker-)?compose\.ya?ml$

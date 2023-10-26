@@ -1,0 +1,17 @@
+[build-system]
+requires = ["release-gitter[builder]"]
+build-backend = "pseudo_builder"
+
+[tool.release-gitter]
+git-url = "https://github.com/docker/compose"
+version = "v2.23.0"
+
+format = "docker-compose-{system}-{arch}"
+# exec = "mv {} docker-compose && chmod +x docker-compose"
+[tool.release-gitter.map-system]
+    Darwin = "darwin"
+    Windows = "windows"
+    Linux = "linux"
+[tool.release-gitter.map-arch]
+    arm64 = "aarch64"
+    amd64 = "x86_64"
