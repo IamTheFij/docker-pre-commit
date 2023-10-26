@@ -9,9 +9,8 @@ workspace:
 steps:
 
   - name: test
-    image: iamthefij/drone-pre-commit:latest
+    image: iamthefij/drone-pre-commit@sha256:6ed8dae6b0067bd2e145e36421bcfbbc68975ff7ddaa5a3f285b5bcdaf0989c8
     commands:
-      - pip install docker-compose
       - make all
 
   - name: notify
