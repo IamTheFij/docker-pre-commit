@@ -2,7 +2,7 @@
 
 all: check test
 
-test: test-negative test-positive
+test: test-negative test-positive test-hooks
 
 .PHONY: test-positive
 test-positive:
@@ -15,6 +15,10 @@ test-negative:
 	./compose-check.sh tests/docker-compose.bad.yml && { echo 'fail'; exit 1; } || echo 'ok'
 	@echo "Check multiple files. Should error."
 	./compose-check.sh tests/docker-compose* && { echo 'fail'; exit 1; } || echo 'ok'
+
+.PHONY: test-hooks
+test-hooks:
+	pre-commit try-repo . --all-files
 
 # Installs pre-commit hooks
 .PHONY: install-hooks
