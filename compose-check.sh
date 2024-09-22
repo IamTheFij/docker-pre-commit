@@ -23,9 +23,15 @@ else
     exit 1
 fi
 
+# Extra options
+COMPOSE_OPTS=()
+if env $COMPOSE config --help | grep -q -- '--quiet'; then
+    COMPOSE_OPTS+=("--quiet")
+fi
+
 check_file() {
     local file=$1
-    env $COMPOSE --file "$file" config --quiet 2>&1 |
+    env $COMPOSE --file "$file" config "${COMPOSE_OPTS[@]}" 2>&1 |
         sed "/variable is not set. Defaulting/d"
     return "${PIPESTATUS[0]}"
 }
